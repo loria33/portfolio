@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #05040a;
+  --color-surface: #0b0b15;
+  --color-accent: #4f46e5;
+  --color-accent-soft: #6366f1;
+  --color-accent-muted: #a5b4fc;
+  --color-border-subtle: #1f2937;
+  --color-text-primary: #f9fafb;
+  --color-text-muted: #9ca3af;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'SF Pro Display', sans-serif;
+  background-color: #05040a;
+  color: #f9fafb;
+}
+
