@@ -57,9 +57,9 @@ export function HomePage() {
             executive.
           </p>
           <img
-            src="/images/lori.jpg"
-            alt="Lori Azerrad"
-            className="mt-4 h-28 w-28 rounded-full border border-borderSubtle object-cover"
+          src="@public/assets/images/lori.jpeg"
+          alt="Lori Azerrad"
+          className="mt-4 h-28 w-28 rounded-full border border-borderSubtle object-cover"
           />
         </div>
       </section>
