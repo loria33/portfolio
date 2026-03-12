@@ -39,6 +39,7 @@ export function HomePage() {
             Engineering Manager / Senior EM • React Native Consultant • Node.js
             Consultant • AI Product Consultant
           </p>
+
         </div>
 
         <div className="rounded-2xl border border-borderSubtle bg-surface/60 p-5 text-sm text-textMuted shadow-soft-card">
@@ -56,11 +57,42 @@ export function HomePage() {
             need senior delivery leadership without adding a full-time
             executive.
           </p>
-          <img
-            src="/assets/images/lori.jpeg"
-            alt="Lori Azerrad"
-            className="mt-4 h-28 w-28 rounded-full border border-borderSubtle object-cover"
-          />
+          <div className="mt-4 flex items-start gap-4">
+            <img
+              src="/assets/images/lori.jpeg"
+              alt="Lori Azerrad"
+              className="h-24 w-24 rounded-full border border-borderSubtle object-cover sm:h-28 sm:w-28"
+            />
+            <div className="space-y-1 text-xs text-textPrimary sm:text-sm">
+              <p className="font-semibold tracking-tight">
+                LORI — how I work with teams:
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-white">
+                  L
+                </span>
+                Leadership
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-white">
+                  O
+                </span>
+                Operational Excellence
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-white">
+                  R
+                </span>
+                Research &amp; Development
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-white">
+                  I
+                </span>
+                Innovation
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
