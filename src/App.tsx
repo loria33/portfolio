@@ -6,8 +6,19 @@ import { WorkPage } from './pages/WorkPage'
 import { LeadershipPage } from './pages/LeadershipPage'
 import { ConsultingPage } from './pages/ConsultingPage'
 import { ContactPage } from './pages/ContactPage'
+import mixpanel from "mixpanel-browser";
+
 
 function App() {
+
+  //Import Mixpanel SDK
+
+  // Create an instance of the Mixpanel object, your token is already added to this snippet
+  mixpanel.init('1d6317279e4ea4a5153ddce48b5e5e18', {
+    autocapture: true,
+    record_sessions_percent: 0,
+  })
+
   return (
     <div className="min-h-screen bg-background text-textPrimary">
       <Layout>
