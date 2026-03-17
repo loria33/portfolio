@@ -147,10 +147,10 @@ export function ContactPage() {
               Email
             </p>
             <a
-              href="mailto:you@example.com"
+              href="mailto:redcalf2007@gmail.com"
               className="text-sm text-accent hover:text-accentSoft"
             >
-              you@example.com
+              redcalf2007@gmail.com
             </a>
           </div>
           <div>
@@ -158,12 +158,12 @@ export function ContactPage() {
               LinkedIn
             </p>
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/loriazerrad/"
               target="_blank"
               rel="noreferrer"
               className="text-sm text-accent hover:text-accentSoft"
             >
-              linkedin.com/in/your-profile
+              linkedin.com/in/loriazerrad/
             </a>
           </div>
         </div>
