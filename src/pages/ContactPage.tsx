@@ -1,4 +1,3 @@
-import type { FormEvent } from 'react'
 import { useState } from 'react'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
@@ -6,7 +5,7 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error'
 export function ContactPage() {
   const [status, setStatus] = useState<FormState>('idle')
 
-  const handleSubmit = (_event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = () => {
     setStatus('submitting')
     // Let the browser submit to Formspree; we only optimistically set state.
     setTimeout(() => {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export function ConsultingPage() {
   return (
@@ -8,9 +8,16 @@ export function ConsultingPage() {
           Consulting Engagements
         </h1>
         <p className="max-w-2xl text-sm text-textMuted">
-          I offer targeted consulting for teams that need engineering leadership,
-          technical project management, or senior React Native / Node.js
-          execution without adding a full-time executive hire.
+          I offer targeted consulting for teams that need engineering
+          leadership, technical project management, or senior React Native /
+          Node.js execution without adding a full-time executive hire.
+        </p>
+
+        <p className="max-w-2xl text-sm text-textMuted">
+          <h2 className="text-2xl font-semibold tracking-tight text-accent sm:text-2xl">
+            First week is free ( no credit card required - no commitment )
+          </h2>
+          Lets chat and see if we're a good fit.
         </p>
       </section>
 
@@ -29,12 +36,14 @@ export function ConsultingPage() {
             I join as an engineering leadership partner focused on delivery:
             aligning the roadmap, clarifying priorities, and building the
             structures your team needs to ship reliably. This is a good fit when
-            you need an Engineering Manager / Senior Engineering Manager presence
-            without a full-time hire.
+            you need an Engineering Manager / Senior Engineering Manager
+            presence without a full-time hire.
           </p>
           <ul className="mt-1 space-y-1.5 text-xs text-textMuted">
             <li>Project planning that turns ideas into actionable plans.</li>
-            <li>Delivery structure tailored to your team’s size and maturity.</li>
+            <li>
+              Delivery structure tailored to your team’s size and maturity.
+            </li>
             <li>Engineering process improvement to reduce interruptions.</li>
             <li>Roadmap breakdown into phases, milestones, and ownership.</li>
             <li>Architecture review with a practical, product-focused lens.</li>
@@ -60,10 +69,16 @@ export function ConsultingPage() {
           </p>
           <ul className="mt-1 space-y-1.5 text-xs text-textMuted">
             <li>Turning ideas into scoped phases that fit your constraints.</li>
-            <li>Milestone definition with realistic timelines and dependencies.</li>
+            <li>
+              Milestone definition with realistic timelines and dependencies.
+            </li>
             <li>Technical coordination across mobile, backend, and AI work.</li>
-            <li>Managing moving parts across product, design, and engineering.</li>
-            <li>Bringing clarity to delivery so everyone knows what “done” means.</li>
+            <li>
+              Managing moving parts across product, design, and engineering.
+            </li>
+            <li>
+              Bringing clarity to delivery so everyone knows what “done” means.
+            </li>
             <li>Reducing risk by surfacing technical trade-offs early.</li>
           </ul>
         </article>
@@ -103,8 +118,8 @@ export function ConsultingPage() {
             </h2>
             <p className="mt-1 max-w-xl text-sm text-textMuted">
               Share a bit about your team and what you’re building, and we can
-              explore whether leadership, delivery, or hands-on consulting is the
-              right fit.
+              explore whether leadership, delivery, or hands-on consulting is
+              the right fit.
             </p>
           </div>
           <Link
@@ -116,6 +131,5 @@ export function ConsultingPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
