@@ -9,19 +9,44 @@ export function ConsultingPage() {
         </h1>
         <p className="max-w-2xl text-sm text-textMuted">
           I offer targeted consulting for teams that need engineering
-          leadership, technical project management, or senior React Native /
-          Node.js execution without adding a full-time executive hire.
+          leadership, technical project management, or senior Web, React Native
+          and Node.js execution without adding a full-time executive hire.
         </p>
 
         <p className="max-w-2xl text-sm text-textMuted">
           <h2 className="text-2xl font-semibold tracking-tight text-accent sm:text-2xl">
-            First week is free ( no credit card required - no commitment )
+            Lets chat and see if we're a good fit.
           </h2>
-          Lets chat and see if we're a good fit.
+
         </p>
       </section>
 
       <section className="grid gap-6 md:grid-cols-3">
+        {/* Offer 3 */}
+        <article className="flex flex-col gap-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5">
+          <header className="space-y-1">
+            <h2 className="text-sm font-semibold text-textPrimary">
+              Web, React Native and Node.js Consulting
+            </h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accentMuted">
+              Best for teams that need senior hands-on help.
+            </p>
+          </header>
+          <p className="text-sm text-textMuted">
+            I join your team as a senior Web, React Native and Node.js contributor
+            to help you ship features, stabilize production, or modernize
+            architecture. This is ideal when you need extra senior capacity
+            without a long-term hire.
+          </p>
+          <ul className="mt-1 space-y-1.5 text-xs text-textMuted">
+            <li>React Native feature work and architecture improvements.</li>
+            <li>Mobile app performance and stability tuning.</li>
+            <li>Node.js backend support for APIs and services.</li>
+            <li>Debugging and stabilization of existing systems.</li>
+            <li>Production optimization before major launches.</li>
+            <li>AI feature integration into existing apps.</li>
+          </ul>
+        </article>
         {/* Offer 1 */}
         <article className="flex flex-col gap-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5">
           <header className="space-y-1">
@@ -83,31 +108,7 @@ export function ConsultingPage() {
           </ul>
         </article>
 
-        {/* Offer 3 */}
-        <article className="flex flex-col gap-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5">
-          <header className="space-y-1">
-            <h2 className="text-sm font-semibold text-textPrimary">
-              React Native / Node.js Consulting
-            </h2>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accentMuted">
-              Best for teams that need senior hands-on help.
-            </p>
-          </header>
-          <p className="text-sm text-textMuted">
-            I join your team as a senior React Native and Node.js contributor to
-            help you ship features, stabilize production, or modernize
-            architecture. This is ideal when you need extra senior capacity
-            without a long-term hire.
-          </p>
-          <ul className="mt-1 space-y-1.5 text-xs text-textMuted">
-            <li>React Native feature work and architecture improvements.</li>
-            <li>Mobile app performance and stability tuning.</li>
-            <li>Node.js backend support for APIs and services.</li>
-            <li>Debugging and stabilization of existing systems.</li>
-            <li>Production optimization before major launches.</li>
-            <li>AI feature integration into existing apps.</li>
-          </ul>
-        </article>
+
       </section>
 
       <section className="rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">

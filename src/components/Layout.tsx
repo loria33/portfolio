@@ -8,7 +8,6 @@ type LayoutProps = {
 const navLinkBase =
   'text-sm font-medium transition-colors hover:text-accentSoft text-textMuted'
 
-const CONTACT_EMAIL = 'loria3@gmail.com'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/loriazerrad/'
 const GITHUB_URL = 'https://github.com/loria33'
 
@@ -98,9 +97,9 @@ export function Layout({ children }: LayoutProps) {
             >
               Consulting
             </NavLink>
-            <a href={`mailto:${CONTACT_EMAIL}`} className={navLinkBase}>
+            <NavLink to="/contact" className={navLinkBase}>
               Contact
-            </a>
+            </NavLink>
             <a
               href={LINKEDIN_URL}
               target="_blank"
@@ -181,13 +180,17 @@ export function Layout({ children }: LayoutProps) {
                   >
                     Consulting
                   </NavLink>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="rounded-xl px-3 py-2 text-textMuted transition hover:bg-background/40 hover:text-textPrimary"
+                  <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                      `rounded-xl px-3 py-2 transition hover:bg-background/40 ${
+                        isActive ? 'text-textPrimary' : 'text-textMuted'
+                      }`
+                    }
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Contact
-                  </a>
+                  </NavLink>
                 </div>
 
                 <div className="my-2 h-px bg-borderSubtle/70" />

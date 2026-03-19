@@ -7,7 +7,7 @@ export function HomePage() {
       <section className="grid gap-10 lg:grid-cols-[1.35fr_minmax(0,1fr)] lg:items-center">
         <div className="space-y-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accentMuted">
-            Engineering Leadership • React Native • Node.js • AI Product Delivery
+            Engineering Leadership • Web • React Native • Node.js • AI Product Delivery
           </p>
           <h1 className="text-3xl font-semibold tracking-tight text-textPrimary sm:text-4xl lg:text-5xl">
             AI Engineering Leader Building Real Products
@@ -39,8 +39,8 @@ export function HomePage() {
           <p className="mb-3">
             An Engineering Manager / Senior EM who can bring structure to
             delivery, consult on technical project execution, and contribute
-            hands-on to React Native and Node.js products — especially where AI
-            is part of the roadmap.
+            hands-on to Web, React Native and Node.js products — especially
+            where AI is part of the roadmap.
           </p>
           <div className="mt-4 flex items-start gap-4">
             <img
@@ -49,7 +49,7 @@ export function HomePage() {
               className="h-24 w-24 rounded-full border border-borderSubtle object-cover sm:h-28 sm:w-28"
             />
             <div className="space-y-1 text-xs text-textPrimary sm:text-sm">
-              <p className="font-semibold tracking-tight">
+              {/* <p className="font-semibold tracking-tight">
                 LORI — how I work with teams:
               </p>
               <p className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export function HomePage() {
                   I
                 </span>
                 Innovation
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -126,21 +126,7 @@ export function HomePage() {
             </div>
           </article>
 
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-textPrimary">
-                Verbali
-              </h3>
-              <p className="text-sm text-textMuted">
-                AI communication assistant designed to help non-verbal individuals communicate using contextual AI responses.
-              </p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React Native</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Speech AI</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">AI assistants</span>
-            </div>
-          </article>
+
         </div>
       </section>
 
@@ -178,6 +164,22 @@ export function HomePage() {
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">iOS</span>
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Android</span>
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">HealthTech</span>
+            </div>
+          </article>
+
+          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-textPrimary">
+                Verbali
+              </h3>
+              <p className="text-sm text-textMuted">
+                AI communication assistant designed to help non-verbal individuals communicate using contextual AI responses.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React Native</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Speech AI</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">AI assistants</span>
             </div>
           </article>
 
@@ -251,10 +253,10 @@ export function HomePage() {
 
           <div className="flex flex-col gap-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5">
             <h3 className="text-sm font-semibold text-textPrimary">
-              React Native &amp; Node.js
+              Web, React Native &amp; Node.js
             </h3>
             <p className="text-sm text-textMuted">
-              Hands-on support for production mobile apps and backend systems.
+              Hands-on support for production web applications, mobile apps, and backend systems.
             </p>
           </div>
 
@@ -283,7 +285,7 @@ export function HomePage() {
                   <span className="h-1 w-1 rounded-full bg-accent"></span> Engineering leadership consulting
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-accent"></span> React Native product development
+                  <span className="h-1 w-1 rounded-full bg-accent"></span> Web &amp; React Native development
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-accent"></span> AI-powered product features

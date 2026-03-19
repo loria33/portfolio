@@ -7,8 +7,8 @@ export function CapabilitiesPage() {
         </h1>
         <p className="max-w-2xl text-sm text-textMuted">
           I work at the intersection of engineering leadership, technical
-          project management, and senior mobile/backend execution. Below is how
-          I typically engage with teams and products.
+          project management, and senior Web, mobile, and backend execution.
+          Below is how I typically engage with teams and products.
         </p>
       </section>
 
@@ -84,19 +84,22 @@ export function CapabilitiesPage() {
         </div>
       </section>
 
-      {/* React Native / Node.js */}
+      {/* Web, React Native & Node.js */}
       <section className="space-y-4">
         <div className="space-y-1">
           <h2 className="text-lg font-semibold text-textPrimary">
-            React Native &amp; Node.js Execution
+            Web, React Native &amp; Node.js Execution
           </h2>
           <p className="max-w-2xl text-sm text-textMuted">
-            I still build. I work hands-on in React Native and Node.js codebases
-            to help teams ship features, improve performance, and stabilize
-            production systems.
+            I still build. I work hands-on in Web, React Native and Node.js
+            codebases to help teams ship features, improve performance, and
+            stabilize production systems.
           </p>
         </div>
         <div className="grid gap-3 text-sm text-textMuted sm:grid-cols-2">
+          <div className="rounded-xl border border-borderSubtle bg-surface/80 p-4">
+            Modern Web applications and frontend architecture.
+          </div>
           <div className="rounded-xl border border-borderSubtle bg-surface/80 p-4">
             React Native mobile apps for iOS and Android.
           </div>
