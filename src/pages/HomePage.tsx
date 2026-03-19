@@ -81,54 +81,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* AI Sandbox Experiments */}
-      <section className="space-y-5">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight text-textPrimary sm:text-2xl">
-            AI Sandbox Experiments
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm text-textMuted">
-            I build experimental applications to explore the capabilities of new AI models, including on-device LLMs, AI assistants, and real-world product integrations.
-          </p>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-textPrimary">
-                AmigoLocal
-              </h3>
-              <p className="text-sm text-textMuted">
-                On-device LLM experimentation platform designed to explore private AI interactions and evaluate mobile inference performance.
-              </p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React Native</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">On-device LLM</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">AI experimentation</span>
-            </div>
-          </article>
-
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-textPrimary">
-                AskRed
-              </h3>
-              <p className="text-sm text-textMuted">
-                AI-powered knowledge assistant using RAG pipelines and Gemini LLM to answer questions from structured knowledge bases.
-              </p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Node.js</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Postgres</span>
-              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Gemini</span>
-            </div>
-          </article>
-
-
-        </div>
-      </section>
 
       {/* Products Built */}
       <section className="space-y-5">
@@ -150,7 +102,7 @@ export function HomePage() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
+          <Link to="/work" className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5 hover:border-accent/60 hover:bg-surface transition-colors cursor-pointer block text-left">
             <div className="space-y-2">
               <h3 className="text-sm font-semibold text-textPrimary">
                 GH Tracker — Mobile Health Tracking App
@@ -165,9 +117,9 @@ export function HomePage() {
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Android</span>
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">HealthTech</span>
             </div>
-          </article>
+          </Link>
 
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
+          <Link to="/work" className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5 hover:border-accent/60 hover:bg-surface transition-colors cursor-pointer block text-left">
             <div className="space-y-2">
               <h3 className="text-sm font-semibold text-textPrimary">
                 Verbali
@@ -181,9 +133,9 @@ export function HomePage() {
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Speech AI</span>
               <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">AI assistants</span>
             </div>
-          </article>
+          </Link>
 
-          <article className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5">
+          <Link to="/work" className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5 hover:border-accent/60 hover:bg-surface transition-colors cursor-pointer block text-left">
             <div className="space-y-2">
               <h3 className="text-sm font-semibold text-textPrimary">
                 Matly — AI-Powered BJJ Coaching
@@ -192,9 +144,57 @@ export function HomePage() {
                 AI-powered Brazilian Jiu-Jitsu coaching assistant.
               </p>
             </div>
-          </article>
+          </Link>
         </div>
       </section>
+
+      {/* AI Sandbox Experiments */}
+      <section className="space-y-5">
+        <div>
+          <h2 className="text-xl font-semibold tracking-tight text-textPrimary sm:text-2xl">
+            AI Sandbox Experiments
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-textMuted">
+            I build experimental applications to explore the capabilities of new AI models, including on-device LLMs, AI assistants, and real-world product integrations.
+          </p>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <Link to="/work" className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5 hover:border-accent/60 hover:bg-surface transition-colors cursor-pointer block text-left">
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-textPrimary">
+                AmigoLocal
+              </h3>
+              <p className="text-sm text-textMuted">
+                On-device LLM experimentation platform designed to explore private AI interactions and evaluate mobile inference performance.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React Native</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">On-device LLM</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">AI experimentation</span>
+            </div>
+          </Link>
+
+          <Link to="/work" className="flex flex-col justify-between rounded-2xl border border-borderSubtle bg-surface/80 p-5 hover:border-accent/60 hover:bg-surface transition-colors cursor-pointer block text-left">
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-textPrimary">
+                AskRed
+              </h3>
+              <p className="text-sm text-textMuted">
+                AI-powered knowledge assistant using RAG pipelines and Gemini LLM to answer questions from structured knowledge bases.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">React</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Node.js</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Postgres</span>
+              <span className="rounded-full bg-background px-2 py-0.5 text-[10px] text-textMuted border border-borderSubtle">Gemini</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
 
       {/* Engineering Leadership */}
       <section className="grid gap-6 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center">

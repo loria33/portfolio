@@ -1,4 +1,35 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
+
+function ImageModal({ src, onClose }: { src: string; onClose: () => void }) {
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div className="relative max-h-full max-w-full animate-in fade-in zoom-in-95 duration-200">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute -right-3 -top-3 flex h-8 w-8 items-center justify-center rounded-full bg-surface border border-borderSubtle text-textPrimary hover:bg-surface/80 shadow-md"
+          aria-label="Close"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <img
+          src={src}
+          alt="Expanded view"
+          className="max-h-[85vh] max-w-[90vw] rounded-xl border border-borderSubtle object-contain shadow-soft-card bg-surface/50"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+    </div>,
+    document.body
+  )
+}
 
 export function WorkPage() {
   const [showAskRed, setShowAskRed] = useState(false)
@@ -8,8 +39,13 @@ export function WorkPage() {
   const [showRightHere, setShowRightHere] = useState(false)
   const [showAmigoLocal, setShowAmigoLocal] = useState(false)
 
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
   return (
     <div className="space-y-10">
+      {selectedImage && (
+        <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
+      )}
       <section className="space-y-3">
         <h1 className="text-2xl font-semibold tracking-tight text-textPrimary sm:text-3xl">
           Work
@@ -21,80 +57,7 @@ export function WorkPage() {
       </section>
 
       <div className="space-y-8">
-        {/* AskRed */}
-        <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
-          <header className="flex flex-col gap-3 sm:flex-row sm:items-start">
-            <img
-              src="/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png"
-              alt="AskRed screenshot"
-              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover"
-            />
-            <div className="space-y-1">
-              <h2 className="text-lg font-semibold text-textPrimary">
-                AskRed — AI-Powered Q&amp;A Platform
-              </h2>
-              <p className="text-sm text-textMuted">
-                Production AI Q&amp;A platform with an admin system, Gemini
-                integration, and a React/Node.js/Postgres stack.
-              </p>
-              <div className="mt-1 text-sm">
-                <a
-                  href="https://askred.netlify.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-accent hover:text-accentSoft"
-                >
-                  Visit website
-                </a>
-              </div>
-            </div>
-          </header>
-          {showAskRed && (
-            <>
-              <p className="text-sm text-textMuted">
-                Designed to deliver structured answers from curated knowledge,
-                with Gemini powering answer generation and an admin dashboard
-                for content management.
-              </p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                <img
-                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png"
-                  alt="AskRed marketing site"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-                <img
-                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.13.11.png"
-                  alt="AskRed reporting dashboard"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-                <img
-                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.14.23.png"
-                  alt="AskRed customer chat experience"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-              </div>
-              <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
-                <li>React-based frontend for the end-user Q&amp;A experience.</li>
-                <li>Node.js and PostgreSQL backend architecture.</li>
-                <li>Admin dashboard for maintaining knowledge and content.</li>
-                <li>Gemini LLM integration with guardrails and structure.</li>
-                <li>CDN-hosted files and assets for performance and scale.</li>
-              </ul>
-            </>
-          )}
-          <div className="mt-3 flex items-center justify-between">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accentMuted">
-              React · TypeScript · Node.js · PostgreSQL · Gemini · Admin Dashboard
-            </p>
-            <button
-              type="button"
-              className="text-xs font-medium text-accent hover:text-accentSoft"
-              onClick={() => setShowAskRed((open) => !open)}
-            >
-              {showAskRed ? 'Less' : 'More'}
-            </button>
-          </div>
-        </article>
+
 
         {/* GH Tracker */}
         <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
@@ -102,7 +65,8 @@ export function WorkPage() {
             <img
               src="/assets/images/ghtracker/0x0ss.png"
               alt="GH Tracker mobile app"
-              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover"
+              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/ghtracker/0x0ss.png")}
             />
             <div className="space-y-1">
               <h2 className="text-lg font-semibold text-textPrimary">
@@ -150,22 +114,26 @@ export function WorkPage() {
                 <img
                   src="/assets/images/ghtracker/0x0ss.png"
                   alt="GH Tracker home screen"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/ghtracker/0x0ss.png")}
                 />
                 <img
                   src="/assets/images/ghtracker/0x0ss (1).png"
                   alt="GH Tracker growth chart"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/ghtracker/0x0ss (1).png")}
                 />
                 <img
                   src="/assets/images/ghtracker/0x0ss (2).png"
                   alt="GH Tracker calculations screen"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/ghtracker/0x0ss (2).png")}
                 />
                 <img
                   src="/assets/images/ghtracker/0x0ss (3).png"
                   alt="GH Tracker change order screen"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/ghtracker/0x0ss (3).png")}
                 />
               </div>
               <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
@@ -200,7 +168,8 @@ export function WorkPage() {
             <img
               src="/assets/images/verbali/0x0ss.png"
               alt="Verbali mobile experience"
-              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover"
+              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/verbali/0x0ss.png")}
             />
             <div className="space-y-1">
               <h2 className="text-lg font-semibold text-textPrimary">
@@ -240,22 +209,26 @@ export function WorkPage() {
                 <img
                   src="/assets/images/verbali/0x0ss.png"
                   alt="Verbali smart answers screen"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/verbali/0x0ss.png")}
                 />
                 <img
                   src="/assets/images/verbali/0x0ss (1).png"
                   alt="Verbali customizable board"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/verbali/0x0ss (1).png")}
                 />
                 <img
                   src="/assets/images/verbali/0x0ss (2).png"
                   alt="Verbali emotion board"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/verbali/0x0ss (2).png")}
                 />
                 <img
                   src="/assets/images/verbali/0x0ss (4).png"
                   alt="Verbali main communication board"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/verbali/0x0ss (4).png")}
                 />
               </div>
               <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
@@ -288,7 +261,8 @@ export function WorkPage() {
             <img
               src="/assets/images/matly/matly1.jpeg"
               alt="Matly AI coach"
-              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover"
+              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/matly/matly1.jpeg")}
             />
             <div className="space-y-1">
               <h2 className="text-lg font-semibold text-textPrimary">
@@ -317,12 +291,14 @@ export function WorkPage() {
                 <img
                   src="/assets/images/matly/matly1.jpeg"
                   alt="Matly AI coaching interface"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/matly/matly1.jpeg")}
                 />
                 <img
                   src="/assets/images/matly/matly2.jpeg"
                   alt="Matly training metrics"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/matly/matly2.jpeg")}
                 />
               </div>
             </>
@@ -340,6 +316,161 @@ export function WorkPage() {
             </button>
           </div>
         </article>
+        {/* AskRed */}
+        <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
+          <header className="flex flex-col gap-3 sm:flex-row sm:items-start">
+            <img
+              src="/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png"
+              alt="AskRed screenshot"
+              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png")}
+            />
+            <div className="space-y-1">
+              <h2 className="text-lg font-semibold text-textPrimary">
+                AskRed — AI-Powered Q&amp;A Platform
+              </h2>
+              <p className="text-sm text-textMuted">
+                Production AI Q&amp;A platform with an admin system, Gemini
+                integration, and a React/Node.js/Postgres stack.
+              </p>
+              <div className="mt-1 text-sm">
+                <a
+                  href="https://askred.netlify.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent hover:text-accentSoft"
+                >
+                  Visit website
+                </a>
+              </div>
+            </div>
+          </header>
+          {showAskRed && (
+            <>
+              <p className="text-sm text-textMuted">
+                Designed to deliver structured answers from curated knowledge,
+                with Gemini powering answer generation and an admin dashboard
+                for content management.
+              </p>
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                <img
+                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png"
+                  alt="AskRed marketing site"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/askRed/Screenshot 2026-03-11 at 11.12.32.png")}
+                />
+                <img
+                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.13.11.png"
+                  alt="AskRed reporting dashboard"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/askRed/Screenshot 2026-03-11 at 11.13.11.png")}
+                />
+                <img
+                  src="/assets/images/askRed/Screenshot 2026-03-11 at 11.14.23.png"
+                  alt="AskRed customer chat experience"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/askRed/Screenshot 2026-03-11 at 11.14.23.png")}
+                />
+              </div>
+              <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
+                <li>React-based frontend for the end-user Q&amp;A experience.</li>
+                <li>Node.js and PostgreSQL backend architecture.</li>
+                <li>Admin dashboard for maintaining knowledge and content.</li>
+                <li>Gemini LLM integration with guardrails and structure.</li>
+                <li>CDN-hosted files and assets for performance and scale.</li>
+              </ul>
+            </>
+          )}
+          <div className="mt-3 flex items-center justify-between">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accentMuted">
+              React · TypeScript · Node.js · PostgreSQL · Gemini · Admin Dashboard
+            </p>
+            <button
+              type="button"
+              className="text-xs font-medium text-accent hover:text-accentSoft"
+              onClick={() => setShowAskRed((open) => !open)}
+            >
+              {showAskRed ? 'Less' : 'More'}
+            </button>
+          </div>
+        </article>
+
+        {/* AmigoLocal */}
+        <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
+          <header className="flex flex-col gap-3 sm:flex-row sm:items-start">
+            <img
+              src="/assets/images/amigolocal/0x0ss.png"
+              alt="AmigoLocal on-device LLM sandbox mockup"
+              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/amigolocal/0x0ss.png")}
+            />
+            <div className="space-y-1">
+              <h2 className="text-lg font-semibold text-textPrimary">
+                AmigoLocal — On-Device LLM Sandbox
+              </h2>
+              <p className="text-sm text-textMuted">
+                Experimental application for running large language models directly on-device.
+              </p>
+              <div className="mt-1 text-sm">
+                <a
+                  href="https://apps.apple.com/us/app/amigolocal/id6748647430"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent hover:text-accentSoft"
+                >
+                  Apple App Store
+                </a>
+              </div>
+            </div>
+          </header>
+          {showAmigoLocal && (
+            <>
+              <p className="text-sm text-textMuted">
+                Evaluates the feasibility of private, low-latency AI interactions without cloud inference.
+                Serves as a sandbox for testing model architectures, prompt strategies, and mobile interaction patterns.
+              </p>
+              <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
+                <li>On-device LLM inference for privacy and offline access.</li>
+                <li>Latency comparisons between local and cloud AI models.</li>
+                <li>Prompt design optimized for constrained mobile models.</li>
+                <li>Mobile interaction patterns for AI assistants.</li>
+                <li>Privacy-preserving AI architectures.</li>
+              </ul>
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                <img
+                  src="/assets/images/amigolocal/0x0ss.png"
+                  alt="AmigoLocal interface"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/amigolocal/0x0ss.png")}
+                />
+                <img
+                  src="/assets/images/amigolocal/0x0ss (1).png"
+                  alt="AmigoLocal model settings"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/amigolocal/0x0ss (1).png")}
+                />
+                <img
+                  src="/assets/images/amigolocal/0x0ss (2).png"
+                  alt="AmigoLocal performance tracking"
+                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => setSelectedImage("/assets/images/amigolocal/0x0ss (2).png")}
+                />
+              </div>
+            </>
+          )}
+          <div className="mt-3 flex items-center justify-between">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-accentMuted">
+              React Native · Mobile Inference · LLMs · Privacy · AI Architecture
+            </p>
+            <button
+              type="button"
+              className="text-xs font-medium text-accent hover:text-accentSoft"
+              onClick={() => setShowAmigoLocal((open) => !open)}
+            >
+              {showAmigoLocal ? 'Less' : 'More'}
+            </button>
+          </div>
+        </article>
 
         {/* RightHear (consulting) */}
         <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
@@ -347,7 +478,8 @@ export function WorkPage() {
             <img
               src="/assets/images/rightHear/RightHear_logo.png"
               alt="RightHear logo"
-              className="h-16 w-40 rounded-lg border border-borderSubtle object-contain bg-white"
+              className="h-16 w-40 rounded-lg border border-borderSubtle object-contain bg-white cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setSelectedImage("/assets/images/rightHear/RightHear_logo.png")}
             />
             <div className="space-y-1">
               <h2 className="text-lg font-semibold text-textPrimary">
@@ -397,78 +529,6 @@ export function WorkPage() {
           </div>
         </article>
 
-        {/* AmigoLocal */}
-        <article className="space-y-3 rounded-2xl border border-borderSubtle bg-surface/80 p-5 sm:p-6">
-          <header className="flex flex-col gap-3 sm:flex-row sm:items-start">
-            <img
-              src="/assets/images/amigolocal/0x0ss.png"
-              alt="AmigoLocal on-device LLM sandbox mockup"
-              className="h-24 w-40 rounded-lg border border-borderSubtle object-cover"
-            />
-            <div className="space-y-1">
-              <h2 className="text-lg font-semibold text-textPrimary">
-                AmigoLocal — On-Device LLM Sandbox
-              </h2>
-              <p className="text-sm text-textMuted">
-                Experimental application for running large language models directly on-device.
-              </p>
-              <div className="mt-1 text-sm">
-                <a
-                  href="https://apps.apple.com/us/app/amigolocal/id6748647430"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-accent hover:text-accentSoft"
-                >
-                  Apple App Store
-                </a>
-              </div>
-            </div>
-          </header>
-          {showAmigoLocal && (
-            <>
-              <p className="text-sm text-textMuted">
-                Evaluates the feasibility of private, low-latency AI interactions without cloud inference. 
-                Serves as a sandbox for testing model architectures, prompt strategies, and mobile interaction patterns.
-              </p>
-              <ul className="mt-3 grid gap-2 text-sm text-textMuted sm:grid-cols-2">
-                <li>On-device LLM inference for privacy and offline access.</li>
-                <li>Latency comparisons between local and cloud AI models.</li>
-                <li>Prompt design optimized for constrained mobile models.</li>
-                <li>Mobile interaction patterns for AI assistants.</li>
-                <li>Privacy-preserving AI architectures.</li>
-              </ul>
-              <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                <img
-                  src="/assets/images/amigolocal/0x0ss.png"
-                  alt="AmigoLocal interface"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-                <img
-                  src="/assets/images/amigolocal/0x0ss (1).png"
-                  alt="AmigoLocal model settings"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-                <img
-                  src="/assets/images/amigolocal/0x0ss (2).png"
-                  alt="AmigoLocal performance tracking"
-                  className="h-24 w-full rounded-lg border border-borderSubtle object-cover"
-                />
-              </div>
-            </>
-          )}
-          <div className="mt-3 flex items-center justify-between">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-accentMuted">
-              React Native · Mobile Inference · LLMs · Privacy · AI Architecture
-            </p>
-            <button
-              type="button"
-              className="text-xs font-medium text-accent hover:text-accentSoft"
-              onClick={() => setShowAmigoLocal((open) => !open)}
-            >
-              {showAmigoLocal ? 'Less' : 'More'}
-            </button>
-          </div>
-        </article>
       </div>
 
     </div>
